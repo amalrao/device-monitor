@@ -7,7 +7,7 @@ import time
 import socket
 import requests
 
-SERVER = "http://192.168.29.35:8000/heartbeat"
+SERVER_URL = "https://device-monitor-api-0yl1.onrender.com"
 
 while True:
     try:

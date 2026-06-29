@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   const loadDevices = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/devices");
+      const res = await axios.get("https://device-monitor-api-0yl1.onrender.com");
       setDevices(res.data);
     } catch (err) {
       console.log(err);

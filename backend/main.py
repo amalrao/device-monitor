@@ -94,9 +94,9 @@ def get_devices(db: Session = Depends(get_db)):
 
     for d in devices:
 
-        seconds = (datetime.now() - d.last_seen).total_seconds()
+        seconds = abs((current_time - d.last_seen).total_seconds())
 
-        status = "Online"
+        status = "Online" if seconds <= 30 else "Offline"
 
         if seconds > 30:
             status = "Offline"

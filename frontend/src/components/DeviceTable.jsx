@@ -5,9 +5,10 @@ export default function DeviceTable({ devices }) {
 
   const [search, setSearch] = useState("");
 
-  const filtered = devices.filter((device) =>
-    device.hostname.toLowerCase().includes(search.toLowerCase()) ||
-    device.ip.toLowerCase().includes(search.toLowerCase())
+  const filtered = devices.filter(
+    (device) =>
+      device.hostname.toLowerCase().includes(search.toLowerCase()) ||
+      device.ip.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -16,22 +17,18 @@ export default function DeviceTable({ devices }) {
       <div className="table-header">
 
         <div>
-
           <h3>Workstations</h3>
-
           <p>Real-Time Connected Devices</p>
-
         </div>
 
         <div className="search-wrapper">
-
           <Search size={18} />
 
           <input
             type="text"
             placeholder="Search workstation..."
             value={search}
-            onChange={(e)=>setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             className="search-box"
           />
 
@@ -46,11 +43,8 @@ export default function DeviceTable({ devices }) {
           <tr>
 
             <th>Device</th>
-
             <th>IP Address</th>
-
             <th>Last Seen</th>
-
             <th>Status</th>
 
           </tr>
@@ -59,21 +53,19 @@ export default function DeviceTable({ devices }) {
 
         <tbody>
 
-          {filtered.length===0 ? (
+          {filtered.length === 0 ? (
 
             <tr>
 
               <td colSpan="4" className="empty">
-
                 No Workstations Found
-
               </td>
 
             </tr>
 
           ) : (
 
-            filtered.map((device)=>(
+            filtered.map((device) => (
 
               <tr key={device.id}>
 
@@ -81,7 +73,7 @@ export default function DeviceTable({ devices }) {
 
                   <div className="device-name">
 
-                    <Monitor size={18}/>
+                    <Monitor size={18} />
 
                     <strong>{device.hostname}</strong>
 
@@ -92,27 +84,21 @@ export default function DeviceTable({ devices }) {
                 <td>{device.ip}</td>
 
                 <td>
-
-                  {new Date(device.last_seen).toLocaleString()}
-
+                  {new Date(device.last_seen).toLocaleString("en-IN")}
                 </td>
 
                 <td>
 
-                  {device.status==="Online" ? (
+                  {device.status === "Online" ? (
 
                     <span className="status online">
-
                       ● Online
-
                     </span>
 
                   ) : (
 
                     <span className="status offline">
-
                       ● Offline
-
                     </span>
 
                   )}
@@ -130,7 +116,5 @@ export default function DeviceTable({ devices }) {
       </table>
 
     </div>
-
   );
-
 }

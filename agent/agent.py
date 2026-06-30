@@ -1,13 +1,9 @@
 import time
 import socket
-import platform
 import requests
 
-import time
-import socket
-import requests
-
-SERVER_URL = "https://device-monitor-api-0yl1.onrender.com"
+SERVER_URL = "https://device-monitor-api-0yl1.onrender.com/heartbeat"
+# SERVER_URL = "http://127.0.0.1:8000/heartbeat"
 
 while True:
     try:
@@ -17,7 +13,7 @@ while True:
             "ip": socket.gethostbyname(socket.gethostname())
         }
 
-        r = requests.post(SERVER, json=data, timeout=5)
+        r = requests.post(SERVER_URL, json=data, timeout=5)
 
         print("Heartbeat Sent:", r.status_code)
 
